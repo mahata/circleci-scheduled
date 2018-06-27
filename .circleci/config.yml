@@ -24,7 +24,7 @@ workflows:
   normal_test_workflow:
     jobs:
       - build
-  periodic_workflow:
+  nightly_workflow:
     triggers:
       - schedule:
           cron: "*/5 * * * *"
