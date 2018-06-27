@@ -11,3 +11,10 @@ jobs:
       - run:
           name: Print the Current Time
           command: date
+  something:
+    docker:
+      - image: circleci/golang:1.9.2
+    working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
+    steps:
+      - checkout
+      - run: echo 'Hello something!'
