@@ -18,3 +18,19 @@ jobs:
     steps:
       - checkout
       - run: echo 'Hello something!'
+
+workflows:
+  version: 2
+  normal_test_workflow:
+    jobs:
+      - build
+  nightly_workflow:
+    triggers:
+      - schedule:
+          cron: "* * * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - something
