@@ -24,10 +24,10 @@ workflows:
   normal_test_workflow:
     jobs:
       - build
-  nightly_workflow:
+  periodic_workflow:
     triggers:
       - schedule:
-          cron: "* * * * *"
+          cron: "*/5 * * * *"
           filters:
             branches:
               only:
