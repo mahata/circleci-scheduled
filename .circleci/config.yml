@@ -1,32 +1,13 @@
 version: 2
 jobs:
-  something:
-    docker:
-      - image: circleci/golang:1.9.2
-    working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
-    steps:
-      - checkout
-      - run: echo 'Hello something!'
   build:
     docker:
-      - image: circleci/golang:1.9.2
-    working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
+      - image: debian:stretch
     steps:
       - checkout
-      - run: echo 'Hello world!'
-
-workflows:
-  version: 2
-  normal_test_workflow:
-    jobs:
-      - build
-  nightly_workflow:
-    triggers:
-      - schedule:
-          cron: "*/1 * * * *"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - something
+      - run:
+          name: Greeting
+          command: echo Hello, world.
+      - run:
+          name: Print the Current Time
+          command: date
